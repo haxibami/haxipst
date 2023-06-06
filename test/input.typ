@@ -1,19 +1,34 @@
+#import "../lib/macro.typ": *
+
 // document setting
 #set document(title: "typst文書のサンプル", author: "haxibami")
 #set page(paper: "a4")
-#set text(lang: "ja", region: "JP")
-#set text(font: (
+#set text(lang: "ja", region: "JP", size: 10pt, font: (
+  "Latin Modern Roman",
   "Noto Serif CJK JP",
   "Noto Sans CJK JP",
   "Twitter Color Emoji"
 ))
 #set par(leading: 1em)
 #set enum(indent: 1em)
+#set table(inset: 8pt)
+#set heading(numbering: "1.1.")
+#set math.equation(numbering: (sym.dots.h.c + " (1)"))
+#set ref(supplement: "式")
 
 // display
-#show heading: it => block(inset: (y: 10pt))[
-  #text(font: ("Noto Sans CJK JP"), weight: "bold", it.body)
-]
+#show heading: it => {
+  if it.numbering == none {
+    block(inset: (y: 1em))[
+      #text(font: ("Noto Sans CJK JP"), weight: "bold")[#it.body]
+    ]
+  } else {
+    block(inset: (y: 1em))[
+      #text(font: ("Noto Sans CJK JP"), weight: "bold")[#counter(heading).display() #it.body]
+    ]
+  }
+}
+
 #show par: set block(spacing: 1.5em)
 #show raw.where(block: false): box.with(
   fill: luma(240),
@@ -26,17 +41,23 @@
   inset: 10pt,
   radius: 4pt,
 )
+#show ref: it => {
+  let el = it.element
+  if el != none and el.func() == heading {
+    numbering(
+      el.numbering,
+      ..counter(heading).at(el.location())
+    )
+  } else {
+    it
+  }
+}
 #show link: it => {
   underline(offset: 3pt, text(blue, it.body))
 }
 #show emph: it => {
   text(font: "Latin Modern Roman", style: "italic", it.body)
 }
-
-// custom
-#let bold(it) = text(weight: "bold")[#it]
-#let latin(it) = text(font: "Latin Modern Roman")[#it]
-#let latex = text(font: "Latin Modern Roman", [L#h(-0.35em)#text(size: 0.725em, baseline: -0.25em)[A]#h(-0.125em)T#h(-0.175em)#text(baseline: 0.225em)[E]#h(-0.125em)X])
 
 // title
 #align(center, text(size: 24pt, font: ("Noto Sans CJK JP"))[
@@ -93,7 +114,7 @@
 + 捕食者
 + ツイーター
 
-ツイート捕食者 #text(size: 1.5em, fill: red)[ツイーター] は、ツイートを#underline(offset: 3pt)[捕食]して消費する。しかし、みなさんのツイート生産速度のほうが#bold[はるかに]速いため、けっして追いつくことはない。
+ツイート捕食者 #text(size: 1.5em, fill: red)[ツイーター] は、ツイートを#underline(offset: 3pt)[捕食]して消費する。しかし、みなさんのツイート生産速度のほうが#bl[はるかに]速いため、けっして追いつくことはない。
 
 ```typ
 このごろ都に流行るもの
@@ -102,7 +123,7 @@
 + 捕食者
 + ツイーター
 
-ツイート捕食者 #text(size: 1.5em, fill: red)[ツイーター] は、ツイートを#underline(offset: 3pt)[捕食]して消費する。しかし、みなさんのツイート生産速度のほうが#bold[はるかに]速いため、けっして追いつくことはない。
+ツイート捕食者 #text(size: 1.5em, fill: red)[ツイーター] は、ツイートを#underline(offset: 3pt)[捕食]して消費する。しかし、みなさんのツイート生産速度のほうが#bl[はるかに]速いため、けっして追いつくことはない。
 ```
 
 $P(x)$:「$x$ がツイートを捕食する」、$Q(x)$:「$x$ がツイーターである」とすると、
