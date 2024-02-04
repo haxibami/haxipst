@@ -8,11 +8,18 @@ My typst templates & utilities (WIP). Includes:
 - `better-heading` - utilty to get loose heading
 - `macro/*` - various macros (`#noindent`, `#latex`...)
 
-## Usage
+## Install
 
 This package is not published to official repo, since it is my personal one.
 
 But you can use it as local package (See [Official Guide](https://github.com/typst/packages#local-packages) for more information).
+
+```sh
+cd {data-dir} # Depends on your environment
+git clone https://github.com/haxibami/haxipst.git 0.1.0
+```
+
+## Usage
 
 See `test/sample.typ` for example usage.
 
