@@ -16,6 +16,7 @@ But you can use it as local package (See [Official Guide](https://github.com/typ
 
 ```sh
 cd {data-dir} # Depends on your environment
+mkdir -p ./typst/packages/local/haxipst && cd ./typst/packages/local/haxipst
 git clone https://github.com/haxibami/haxipst.git 0.1.0
 ```
 
