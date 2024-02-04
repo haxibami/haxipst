@@ -1,0 +1,10 @@
+[package]
+name = "haxipst"
+version = "0.1.0"
+entrypoint = "src/main.typ"
+authors = ["haxibami"]
+license = "MIT"
+description = "my personal typst package (template and macros)"
+repository = "https://github.com/haxibami/haxipst"
+keywords = ["typst", "macros", "template", "resume"]
+exclude = ["test/*"]
