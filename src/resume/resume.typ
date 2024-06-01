@@ -21,7 +21,7 @@
     "Latin Modern Math",
     "Latin Modern Roman",
     "Noto Serif CJK JP",
-    "serif"
+    "serif",
   ),
   font-sans: (
     "Liberation Sans",
@@ -33,7 +33,7 @@
   font-mono: (
     "Liberation Mono",
     "Noto Sans Mono CJK JP",
-    "monospace"
+    "monospace",
   ),
   font-size: 10pt,
   spacing: 1.5em,
@@ -44,43 +44,49 @@
 
   // set PDF metadata
   show: set-metadata.with(
-    pdf-title: 
-      if (pdf-title == none) {
-        title
-      } else {
-        pdf-title
-      },
+    pdf-title: if (
+      pdf-title == none
+    ) {
+      title
+    } else {
+      pdf-title
+    },
     pdf-author: pdf-author,
     pdf-keywords: pdf-keywords,
-    pdf-date: pdf-date
+    pdf-date: pdf-date,
   )
 
   // language, font family & size
-  set text(lang: lang, region: region, size: font-size, font: (
-    ..font-serif,
-    ..font-sans,
-    ..font-emoji
-  ))
+  set text(
+    lang: lang,
+    region: region,
+    size: font-size,
+    font: (
+      ..font-serif,
+      ..font-sans,
+      ..font-emoji,
+    ),
+  )
 
   set enum(indent: 1em)
   set table(inset: 0.8em)
-  set list(marker: ([•],[▹],[»],[--]))
-  set ref(supplement: "表")
+  set list(marker: (
+    [•],
+    [▹],
+    [»],
+    [--],
+  ))
 
   // page size
   set page(paper: size)
 
   // header
-  set page(
-    header: [
-      #set text(8pt)
-      #header
-    ],
-  ) if header != []
+  set page(header: [
+    #set text(8pt)
+    #header
+  ]) if header != []
 
-  set page(
-    numbering: "1"
-  ) if pagenum
+  set page(numbering: "1") if pagenum
 
   // heading
   show: better-heading.with(
@@ -90,18 +96,25 @@
   )
 
   // title, date, author
-  align(center, text[
-    #set text(font: font-sans)
-    #title
-    #v(0.5em)
-  ])
-  align(right, text[
-    #date
-    ]
+  align(
+    center,
+    text[
+      #set text(font: font-sans)
+      #title
+      #v(0.5em)
+    ],
   )
-  align(right, text[
-    #author
-    ]
+  align(
+    right,
+    text[
+      #date
+    ],
+  )
+  align(
+    right,
+    text[
+      #author
+    ],
   )
 
   // inline code style
@@ -109,8 +122,13 @@
     set text(font: font-mono)
     box(
       fill: luma(240),
-      inset: (x: 3pt, y: 0pt),
-      outset: (y: 3pt),
+      inset: (
+        x: 3pt,
+        y: 0pt,
+      ),
+      outset: (
+        y: 3pt,
+      ),
       radius: 2pt,
     )[#it]
   }
@@ -126,15 +144,21 @@
   }
 
   // code block style
-//   show raw.where(block: true): block.with(
-//       fill: luma(240),
-//       inset: 10pt,
-//       radius: 4pt,
-//   )
+  //   show raw.where(block: true): block.with(
+  //       fill: luma(240),
+  //       inset: 10pt,
+  //       radius: 4pt,
+  //   )
 
   // link style
   show link: it => {
-    underline(offset: 3pt, text(blue, it))
+    underline(
+      offset: 3pt,
+      text(
+        blue,
+        it,
+      ),
+    )
   }
 
   // paragraph style
@@ -144,7 +168,7 @@
     indent: indent,
     length: 1em,
     spacing: spacing,
-    font-size: font-size
+    font-size: font-size,
   )
 
   body

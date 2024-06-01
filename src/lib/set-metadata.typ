@@ -6,7 +6,12 @@
   body,
 ) = {
 
-  set document(title: pdf-title, author: pdf-author, keywords: pdf-keywords, date: pdf-date)
+  set document(
+    title: pdf-title,
+    author: pdf-author,
+    keywords: pdf-keywords,
+    date: pdf-date,
+  )
 
   body
 }

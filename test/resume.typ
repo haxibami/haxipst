@@ -45,10 +45,17 @@
 #link("https://github.com/typst/typst/issues/311")[\#311] がまだ解決されていないので、力技
 
 #let code = read("../src/lib/better-indent.typ")
-#raw(code, lang: "Typst", block: true)
+#raw(
+  code,
+  lang: "Typst",
+  block: true,
+)
 
 == 引用
 
-#quote(attribution: [Кино], block: true)[
+#quote(
+  attribution: [Кино],
+  block: true,
+)[
   ... Они говорят им нельзя рисковать, потому что у них есть дом.
 ]

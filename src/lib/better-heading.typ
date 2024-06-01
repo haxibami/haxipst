@@ -7,7 +7,7 @@
   tight: false,
   inset-y: none,
   prefix: none,
-  body
+  body,
 ) = {
 
   if tight {
@@ -17,12 +17,18 @@
   }
 
   show heading: it => {
-    block(inset: (y: inset-y))[
-      #text(font: font, weight: "bold", size: 1em)[
+    block(inset: (
+      y: inset-y,
+    ))[
+      #text(
+        font: font,
+        weight: "bold",
+        size: 1em,
+      )[
         #prefix
         #if it.numbering != none {
-            counter(heading).display()
-          }
+          counter(heading).display()
+        }
         #it.body
       ]
     ]
