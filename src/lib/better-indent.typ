@@ -58,6 +58,15 @@
     text(size: font-size)[#h(0em)]
   }
 
+  show enum: it => {
+    it
+    text(size: font-size)[#v(
+        block-extra-height,
+        weak: true,
+      )]
+    text(size: font-size)[#h(0em)]
+  }
+
   show figure: it => {
     it
     text(size: font-size)[#v(
