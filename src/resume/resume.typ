@@ -1,5 +1,4 @@
 #import "../lib/set-metadata.typ": *
-#import "../lib/better-indent.typ": *
 #import "../lib/better-heading.typ": *
 
 #let resume(
@@ -28,7 +27,7 @@
     "Noto Sans CJK JP",
   ),
   font-emoji: (
-    "Twitter Color Emoji",
+    "Noto Color Emoji",
   ),
   font-mono: (
     "Liberation Mono",
@@ -41,7 +40,6 @@
   heading-inset: none,
   body,
 ) = {
-
   // set PDF metadata
   show: set-metadata.with(
     pdf-title: if (
@@ -70,12 +68,15 @@
 
   set enum(indent: 1em)
   set table(inset: 0.8em)
-  set list(marker: (
-    [•],
-    [▹],
-    [»],
-    [--],
-  ))
+  set list(
+    marker: (
+      [•],
+      [▹],
+      [»],
+      [--],
+    ),
+    indent: 1em,
+  )
 
   // page size
   set page(paper: size)
@@ -162,14 +163,8 @@
   }
 
   // paragraph style
-  show par: set block(spacing: spacing)
-  set par(leading: 1em)
-  show: better-indent.with(
-    indent: indent,
-    length: 1em,
-    spacing: spacing,
-    font-size: font-size,
-  )
+  set par(leading: 1em, spacing: spacing)
+  set par(first-line-indent: (amount: 1em, all: true)) if indent
 
   body
 }

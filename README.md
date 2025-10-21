@@ -4,7 +4,6 @@ My typst templates & utilities (WIP). Includes:
 
 - `resume` - resume / document template
 - `set-metadata` - utility to set metadata for PDF files
-- `better-indent` - utility to indent first paragraph (See: [typst/typst #311](https://github.com/typst/typst/issues/311))
 - `better-heading` - utilty to get loose heading
 - `macro/*` - various macros (`#noindent`, `#latex`...)
 
@@ -17,7 +16,7 @@ But you can use it as local package (See [Official Guide](https://github.com/typ
 ```sh
 cd {data-dir} # Depends on your environment
 mkdir -p ./typst/packages/local/haxipst && cd ./typst/packages/local/haxipst
-git clone https://github.com/haxibami/haxipst.git 0.1.1
+git clone https://github.com/haxibami/haxipst.git 0.1.3
 ```
 
 ## Usage
@@ -25,7 +24,7 @@ git clone https://github.com/haxibami/haxipst.git 0.1.1
 See `test/sample.typ` for example usage.
 
 ```typ
-#import "@local/haxipst:0.1.1": *
+#import "@local/haxipst:0.1.3": *
 
 #show: resume.with(
   pdf-author: "著者",
